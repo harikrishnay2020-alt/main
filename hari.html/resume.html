@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>YANAMALA HARIKRISHNA - Portfolio</title>
+	<style>
+		:root{--bg:#0f1724;--card:#0b1220;--accent:#3b82f6;--muted:#9ca3af;color-scheme:dark}
+		*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#071029 0%,#071524 100%);color:#e6eef8}
+		.container{max-width:960px;margin:36px auto;padding:24px}
+		header.top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+		.profile{display:flex;gap:18px;align-items:center}
+		.avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:#021124}
+		h1{margin:0;font-size:22px}
+		p.lead{margin:4px 0 0;color:var(--muted)}
+		.meta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+		.card{background:rgba(255,255,255,0.02);padding:18px;border-radius:10px}
+		nav.controls{display:flex;gap:8px}
+		button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;padding:8px 10px;border-radius:8px;cursor:pointer}
+		main{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+		section{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:10px}
+		.skills{display:flex;gap:8px;flex-wrap:wrap}
+		.skill{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:13px}
+		.projects{display:flex;flex-direction:column;gap:10px}
+		.project{padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)}
+		footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+		label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+		input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+		.contact-btn{display:inline-block;margin-top:8px;background:var(--accent);border:none;color:#021124;padding:10px 12px;border-radius:8px;cursor:pointer}
+		@media(max-width:820px){main{grid-template-columns:1fr} .avatar{width:76px;height:76px}}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header class="top">
+			<div class="profile">
+				<div class="avatar">YH</div>
+				<div>
+					<h1>YANAMALA HARIKRISHNA</h1>
+					<p class="lead">B.Tech (ECE) — Student at Mother Theresa Institute of Engineering and Technology, Palamaner</p>
+					<div class="meta">
+						<span class="card">Role: Student • Aspiring IT Engineer</span>
+						<span class="card">Location: Palamaner, India</span>
+					</div>
+				</div>
+			</div>
+			<nav class="controls">
+				<button id="themeBtn">Toggle Theme</button>
+				<a href="#contact"><button>Contact</button></a>
+			</nav>
+		</header>
+
+		<main>
+			<section>
+				<h2>About</h2>
+				<p>Focused and motivated undergraduate student pursuing B.Tech in Electronics and Communication Engineering. Interested in embedded systems, signal processing, robotics, and building practical projects that combine hardware and software. Keen to learn, collaborate, and contribute to research or internships.</p>
+
+				<h3 style="margin-top:16px">Skills</h3>
+				<div class="skills">
+					<span class="skill">C / C++</span>
+					<span class="skill">Embedded C</span>
+					<span class="skill">Arduino</span>
+					<span class="skill">Raspberry Pi</span>
+					<span class="skill">Python</span>
+					<span class="skill">MATLAB</span>
+					<span class="skill">PCB Basics</span>
+					<span class="skill">Git</span>
+				</div>
+
+				<h3 style="margin-top:16px">Projects</h3>
+				<div class="projects">
+					<div class="project">
+						<strong>Smart Home Light Controller</strong>
+						<p class="muted">Arduino-based wireless light control with PIR sensor and mobile interface. Implemented energy saving modes and scheduled automation.</p>
+					</div>
+					<div class="project">
+						<strong>Line Following Robot</strong>
+						<p class="muted">Autonomous robot using IR sensors and PID control to follow paths; integrated motor driver and obstacle avoidance.</p>
+					</div>
+					<div class="project">
+						<strong>Signal Analysis Tool</strong>
+						<p class="muted">MATLAB scripts for basic signal filtering, FFT visualization and noise reduction experiments for lab coursework.</p>
+					</div>
+				</div>
+
+				<h3 style="margin-top:16px">Education</h3>
+				<p><strong>Mother Theresa Institute of Engineering and Technology, Palamaner</strong><br> B.Tech in Electronics & Communication Engineering (ongoing)</p>
+
+			</section>
+
+			<aside>
+				<section class="card">
+					<h3>Contact</h3>
+					<p style="margin:6px 0">Email: yanamala@example.com<br>Phone: +91 93927 21053</p>
+					<form id="contact" onsubmit="return submitForm(event)">
+						<label for="name">Name</label>
+						<input id="name" required placeholder="Your name">
+						<label for="message">Message</label>
+						<textarea id="message" rows="4" required placeholder="Short message"></textarea>
+						<button class="contact-btn" type="submit">Send</button>
+					</form>
+				</section>
+
+				<section class="card" style="margin-top:12px">
+					<h3>Quick Info</h3>
+					<p style="margin:6px 0">Graduation year: 2025 • Languages: English, Telugu • Available for internships and project collaborations.</p>
+				</section>
+			</aside>
+		</main>
+
+		<footer>
+			© YANAMALA HARIKRISHNA — Portfolio • Built as a student showcase
+		</footer>
+	</div>
+
+	<script>
+		const themeBtn = document.getElementById('themeBtn');
+		themeBtn.addEventListener('click', ()=>{
+			document.documentElement.style.filter = document.documentElement.style.filter? '': '';
+			alert('Toggle theme not implemented in this simple demo.');
+		});
+
+		function submitForm(e){
+			e.preventDefault();
+			const name = document.getElementById('name').value.trim();
+			const msg = document.getElementById('message').value.trim();
+			if(!name||!msg){alert('Please fill form');return false}
+			alert('Thanks '+name+'. Message sent (demo).');
+			e.target.reset();
+			return false;
+		}
+	</script>
+</body>
+</html>

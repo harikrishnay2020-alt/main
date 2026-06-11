@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YANAMALA HARIKRISHNA | Portfolio</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #111827;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-strong: #7dd3fc;
+            --shadow: rgba(15, 23, 42, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 80%);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        body.light {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --accent: #0284c7;
+            --accent-strong: #38bdf8;
+            --shadow: rgba(15, 23, 42, 0.08);
+            background: #f8fafc;
+        }
+
+        body.light .hero::after {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), transparent);
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 24px;
+            display: grid;
+            gap: 24px;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .brand .name {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .brand .title {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid rgba(226, 232, 240, 0.18);
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 36px;
+            border-radius: 28px;
+            background: var(--card);
+            box-shadow: 0 24px 80px var(--shadow);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at right, rgba(56, 189, 248, 0.18), transparent 35%);
+        }
+
+        .hero-content {
+            position: relative;
+            display: grid;
+            gap: 18px;
+            max-width: 720px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3.2vw, 3.4rem);
+            line-height: 1.05;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .hero .details {
+            display: grid;
+            gap: 14px;
+            padding: 20px 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+        }
+
+        .detail-item span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+
+        section {
+            display: grid;
+            gap: 18px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .section-title h2 {
+            font-size: 1.2rem;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 18px 50px var(--shadow);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .card h3 {
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+        }
+
+        .skill-list,
+        .project-list,
+        .info-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .skill-item {
+            display: grid;
+            gap: 8px;
+        }
+
+        .skill-item strong {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.18);
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            width: 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+            transition: width 0.8s ease;
+        }
+
+        .project-card,
+        .info-card {
+            border-radius: 18px;
+            padding: 18px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+
+        .project-card h4,
+        .info-card h4 {
+            margin-bottom: 8px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+            padding: 14px 0;
+        }
+
+        @media (min-width: 900px) {
+            .page {
+                padding: 40px;
+            }
+
+            .hero,
+            .card-grid {
+                gap: 24px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 28px 20px;
+            }
+
+            .section-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="brand">
+                <div class="name">YANAMALA HARIKRISHNA</div>
+                <div class="title">B.Tech ECE Student | Mother Theresa Institute of Engineering and Technology</div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">Switch theme</button>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div>
+                    <p>Hello! I'm</p>
+                    <h1>YANAMALA HARIKRISHNA</h1>
+                    <p>I am a student of Bachelor of Technology in Electronics and Communication Engineering at Mother Theresa Institute of Engineering and Technology, Palamaner. I enjoy designing clean web experiences, learning embedded systems, and building small projects that bring ideas to life.</p>
+                </div>
+                <div class="details">
+                    <div class="detail-item"><span>🎓</span><div><strong>Degree</strong><div>B.Tech ECE</div></div></div>
+                    <div class="detail-item"><span>🏫</span><div><strong>College</strong><div>Mother Theresa Institute of Engineering and Technology, Palamaner</div></div></div>
+                    <div class="detail-item"><span>💼</span><div><strong>Focus</strong><div>Student | Front-end & embedded systems learner</div></div></div>
+                    <div class="detail-item"><span>📍</span><div><strong>Location</strong><div>Palamaner, India</div></div></div>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+                    <a href="#contact" class="btn-primary">Contact me</a>
+                    <a href="resume.html" download="YANAMALA_HARIKRISHNA_Resume.html" class="btn-primary">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Actively building skills as a student and preparing for real-world engineering work.</p>
+            </div>
+            <div class="card">
+                <p>As a motivated and curious B.Tech student in Electronics and Communication Engineering, I am constantly exploring new technologies and refining my practical skills through academic projects, web development practice, and electronics experiments. I enjoy collaborating with peers, solving engineering challenges, and creating user-friendly digital experiences. My goal is to become a well-rounded engineer who blends technical knowledge with creative problem solving.</p>
+            </div>
+        </section>
+
+        <section class="card-grid">
+            <div class="card">
+                <h3>Education</h3>
+                <div class="info-list">
+                    <div class="info-card">
+                        <h4>Mother Theresa Institute of Engineering and Technology</h4>
+                        <p>B.Tech in Electronics and Communication Engineering</p>
+                        <p>Palamaner, Andhra Pradesh</p>
+                        <p>Expected graduation: 2026</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Intermediate / 10+2</h4>
+                        <p>Completed in Science stream with a strong foundation in Physics and Mathematics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Skills</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <strong>HTML & CSS <span>90%</span></strong>
+                        <div class="skill-bar"><div class="skill-fill" data-fill="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <strong>JavaScript <span>75%</span></strong>
+                        <div class="skill-bar"><div class="skill-fill" data-fill="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Electronics Basics <span>85%</span></strong>
+                        <div class="skill-bar"><div class="skill-fill" data-fill="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Problem Solving <span>80%</span></strong>
+                        <div class="skill-bar"><div class="skill-fill" data-fill="80"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>Selected work completed during coursework and self-learning.</p>
+            </div>
+            <div class="project-list">
+                <div class="project-card">
+                    <h4>Responsive Personal Portfolio</h4>
+                    <p>Built a student portfolio page using HTML, CSS, and JavaScript to showcase academic skills, projects and contact details.</p>
+                </div>
+                <div class="project-card">
+                    <h4>Smart Classroom Prototype</h4>
+                    <p>Designed a simple embedded system concept to monitor classroom lighting and sound sensors using microcontroller basics.</p>
+                </div>
+                <div class="project-card">
+                    <h4>Mini Electronics Lab Setup</h4>
+                    <p>Configured small lab experiments for digital logic and analog circuit fundamentals as part of practical learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Reach out for collaborations, internships, or project discussions.</p>
+            </div>
+            <div class="card">
+                <p><strong>Email:</strong> yanamalaharikrishna@example.com</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>College:</strong> Mother Theresa Institute of Engineering and Technology, Palamaner</p>
+                <p>Available for student internships and engineering projects in web development and electronics.</p>
+            </div>
+        </section>
+
+        <footer>
+            Crafted by YANAMALA HARIKRISHNA | Student portfolio for B.Tech ECE
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light');
+            themeToggle.textContent = body.classList.contains('light') ? 'Dark theme' : 'Light theme';
+        });
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.skill-fill').forEach((bar) => {
+                const value = bar.getAttribute('data-fill');
+                bar.style.width = value + '%';
+            });
+        });
+    </script>
+</body>
+</html>
